@@ -1,0 +1,22 @@
+Day 3: -- objective
+Move to Modern OpenGL
+ ↓
+Add Shader class
+ ↓
+Renderer owns Shader
+ ↓
+Forward declaration no longer enough
+
+
+
+Day three was just debugging Renderer.cpp and all of the inclusions issues with glad and glm.
+
+Reading through this https://glumpy.github.io/modern-gl.html?highlight=shaders made alot of things connect.
+
+I fixed many errors i encounter ~10:00am before lecture. The only issue was simply for to tell cmake.txt to include glad for the list of librarys. then everything compiled and the window was able open again.
+
+After lecture, I implemented new features with Renderer.h, then quickly tutored my peer about modern c++ showing him how easy c++ can be with these newer practices. Then i forgot to delete my the code used for teaching, and spent 40 mins trying to figure out why my program magicaly stopped compiling.
+
+After that, i debug some issues with inclusions agian, and redone how memory initailation.
+
+Now last issue is that shaders.h does not have its .cpp file defined which so im fixing shader.cpp rn. 

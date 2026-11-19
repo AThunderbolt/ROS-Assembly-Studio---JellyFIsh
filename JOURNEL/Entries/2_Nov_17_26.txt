@@ -1,0 +1,278 @@
+Journal Entry - Day 2 (November 17, 2026)
+Project
+
+ROS2 Assembly Studio (formerly "JellyFish")
+
+Today's Accomplishments
+✅ First Successful Build
+
+Today was the day the project stopped being a folder of files and became an actual executable.
+
+Successfully:
+
+Fixed CMake configuration issues
+Learned the difference between:
+source directory
+build directory
+executable output
+Generated build files
+Ran:
+PowerShell
+cmake --build . --config Debug
+Fixed compile error:
+C++
+glfwPollEvent();
+ 
+
+↓
+
+C++
+glfwPollEvents();
+Successfully compiled the project
+✅ Opened First Window
+
+Created GLFW initialization and window creation code.
+
+Window title:
+
+Plain Text
+ROS2 ASSEMBLY STUDIO
+ 
+
+This is the first visual piece of the project.
+
+Milestone:
+
+Plain Text
+Idea
+↓
+Project
+↓
+Executable
+↓
+Window
+✅ Better Understanding of CMake
+
+Learned what these actually do:
+
+CMake
+add_executable(JellyFish src/main.cpp)
+
+Creates the executable target.
+
+CMake
+target_include_directories(JellyFish PRIVATE include)
+
+Adds header search paths.
+
+Equivalent idea:
+
+Shell
+-Iinclude
+CMake
+target_link_libraries(JellyFish PRIVATE glfw glm::glm)
+
+Links external libraries.
+
+Equivalent idea:
+
+Shell
+-lglfw
+ 
+✅ Renderer Architecture Started
+
+Created:
+
+Plain Text
+Renderer.h
+Renderer.cpp
+
+Introduced:
+
+C++
+class Renderer
+{
+public:
+void DrawGrid();
+void DrawAxes();
+};
+
+Beginning separation of:
+
+Plain Text
+main.cpp
+↓
+Renderer
+↓
+Drawing Logic
+
+instead of stuffing all rendering into main.
+
+✅ Modern OpenGL Direction Chosen
+
+Decision made:
+
+Plain Text
+Use Modern OpenGL
+
+Avoid:
+
+C++
+glBegin()
+glEnd()
+
+Future rendering architecture:
+
+Plain Text
+Shader  --NEW
+VAO
+VBO
+Camera
+Renderer ----UPDATED THE ARCITECHURE 
+Scene
+ 
+
+More maintainable and industry-standard.
+
+Updated the architure to a bit more advance "modern openGL," Reason being i wanted the program to have a simuilar feel of Gazebo, and other professional graphics interfaces for my project. this will be very benefital for the long run.
+
+Purpose:
+
+Plain Text
+Create robot assemblies visually
+↓
+Place components
+↓
+Attach components
+↓
+Generate .xacro
+↓
+Import into ROS2
+Current Architecture
+Plain Text
+main
+│
+├── Scene
+├── Entity
+├── Camera
+└── Renderer
+
+Planned additions:
+
+Plain Text
+Shader
+Mesh
+Grid
+Axes
+Viewport Camera
+Xacro Exporter
+What Was Learned
+A build command is not an executable
+
+Before:
+
+Shell
+g++ *.cpp -o program
+
+Now:
+
+Plain Text
+Source Files
+↓
+CMake
+↓
+MSBuild
+↓
+Executable
+
+Build:
+
+PowerShell
+cmake --build . --config Debug
+
+Run:
+
+PowerShell
+.\JellyFish.exe
+Declarations vs Definitions
+
+Header:
+
+C++
+void DrawGrid();
+
+Definition:
+
+C++
+void Renderer::DrawGrid()
+{
+}
+
+Learned how classes communicate with implementation files.
+
+Tomorrow's Objectives
+Goal 1
+
+Finish Renderer foundation.
+
+C++
+void DrawGrid();
+void DrawAxes();
+Goal 2
+
+Create:
+
+Plain Text
+Shader.cpp
+
+and define:
+
+C++
+Shader::Bind()
+Shader::UnBind()
+Shader::SetMat4()
+Goal 3
+
+Render first object.
+
+Options:
+
+Plain Text
+Triangle
+or
+XYZ Axes
+
+Success condition:
+
+Something visible appears.
+
+Goal 4
+
+Render 3D Grid.
+
+Visual target:
+
+Plain Text
++---+---+---+
+| | | |
++---+---+---+
+| | O | |
++---+---+---+
+Goal 5
+
+Begin viewport camera.
+
+Long-term controls:
+
+Plain Text
+Orbit
+Pan
+Zoom
+ 
+
+Like:
+
+SolidWorks
+Blender
+RViz
+Roblox Studio

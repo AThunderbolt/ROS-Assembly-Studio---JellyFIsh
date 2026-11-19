@@ -1,0 +1,235 @@
+Journal Entry - November 16, 2026
+Project: ROS2 Assembly Studio (JellyFish)
+Vision Clarification
+
+The project goal became much clearer today.
+
+Originally the project was loosely centered around graphics and a jellyfish concept, but the real product vision emerged:
+
+Create a lightweight 3D assembly environment where users can visually build ROS2 robots and environments, then export directly to .xacro files without manually writing XML.
+
+The long-term workflow:
+
+Plain Text
+Open Assembly Room
+↓
+Place Components
+↓
+Position and Connect Components
+↓
+Generate .xacro
+↓
+Import into ROS2 Project
+ 
+
+Similar inspirations:
+
+Roblox Studio
+Blender
+SolidWorks Assembly
+RViz
+Unity Scene View
+Toolchain Setup
+
+Successfully installed and configured:
+
+✅ Git
+
+✅ vcpkg
+
+✅ GLFW
+
+✅ GLM
+
+✅ CMake
+
+✅ Visual Studio C++ Toolchain
+
+Project Structure Created
+Plain Text
+JellyFish/
+├── assets/
+│ └── immortal_jellyfish.png
+├── build/
+├── include/
+│ ├── Camera.h
+│ ├── Entity.h
+│ ├── Renderer.h
+│ └── Scene.h
+├── src/
+│ ├── Camera.cpp
+│ ├── Entity.cpp
+│ ├── Renderer.cpp
+│ ├── Scene.cpp
+│ └── main.cpp
+└── CMakeLists.txt
+Architecture Decisions
+
+Created foundational classes:
+
+Entity
+
+Represents any object in the scene.
+
+Future examples:
+
+Plain Text
+Robot Base
+Wheel
+Sensor
+Lidar
+Camera
+Battery
+Scene
+
+Stores all entities existing in the assembly room.
+
+Camera
+
+Will eventually control:
+
+Plain Text
+Position
+Rotation
+Orbit
+Pan
+Zoom
+Renderer
+
+Will handle drawing objects to the screen.
+
+Key Realization
+
+The exporter is not the difficult part.
+
+The difficult part is building a good visual assembly environment.
+
+Development priority became:
+
+Plain Text
+Window
+↓
+Camera
+↓
+Grid
+↓
+Orbit Controls
+↓
+Entities
+↓
+Part Placement
+↓
+Xacro Export
+Problems Solved
+Git command unavailable
+PATH issues
+vcpkg setup
+CMake installation
+CMake command usage
+Typo in cmake_minimum_required
+CMake configuration successfully completed
+
+Final result:
+
+Plain Text
+Configuring done
+Generating done
+Build files have been written to:
+.../JellyFish/build
+ 
+
+Huge milestone.
+
+Plan For Tomorrow
+Goal 1: First Successful Build
+
+Run:
+
+PowerShell
+cmake --build .
+
+Success condition:
+
+Plain Text
+JellyFish.exe is created
+Goal 2: Open First Window
+
+Implement GLFW initialization.
+
+Success condition:
+
+Plain Text
+ROS2 Assembly Studio
+
+appears as the window title.
+
+Black screen is fine.
+
+Goal 3: Camera Foundation
+
+Get Camera object instantiated.
+
+Not moving yet.
+
+Just exists.
+
+Goal 4: Draw Coordinate Axes
+
+Render:
+
+Plain Text
+Z
+ 
+|
+|
+|
+O------ X
+ 
+/
+/
+Y
+
+Success condition:
+
+You can understand orientation in 3D space.
+
+Goal 5: Draw Ground Grid
+
+Render a basic floor grid.
+
+Success condition:
+
+The program starts feeling like:
+
+Blender
+Roblox Studio
+RViz
+
+instead of just an OpenGL demo.
+
+Stretch Goal (if everything goes smoothly)
+
+Create first scene entity:
+
+C++
+Entity baseLink;
+baseLink.name = "base_link";
+
+No rendering required.
+
+Just proving the scene can contain robot components.
+
+End-of-Day Summary
+
+You moved from:
+
+Plain Text
+No graphics environment
+
+to:
+
+Plain Text
+Configured C++ graphics project
+Structured architecture
+Defined MVP vision
+Ready to render first window
